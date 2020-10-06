@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
+import com.oleg.androidmvvm.data.model.Movie
 import io.reactivex.Observable
 
 @Dao

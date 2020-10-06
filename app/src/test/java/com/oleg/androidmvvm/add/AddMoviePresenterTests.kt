@@ -2,7 +2,7 @@ package com.oleg.androidmvvm.add
 
 import com.oleg.androidmvvm.BaseTest
 import com.oleg.androidmvvm.LocalDatabase
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert

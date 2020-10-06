@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oleg.androidmvvm.databinding.ItemMovieMainBinding
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import kotlinx.android.synthetic.main.item_movie_main.view.*
 
-class MainAdapter(private var movieModels: List<MainViewModel>) :
+class MainAdapter(private var movieModels: List<Movie>) :
     RecyclerView.Adapter<MainAdapter.MoviesHolder>() {
 
-    private lateinit var movies: List<Movie>
     internal val selectedMovies = HashSet<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesHolder {
@@ -25,7 +24,7 @@ class MainAdapter(private var movieModels: List<MainViewModel>) :
     override fun getItemCount(): Int = movieModels.size
 
     private fun selectMovie(position: Int) {
-        val movie = movies[position]
+        val movie = movieModels[position]
         if (selectedMovies.contains(movie)) {
             selectedMovies.remove(movie)
         } else {
@@ -35,14 +34,13 @@ class MainAdapter(private var movieModels: List<MainViewModel>) :
 
     fun update(movies: List<Movie>) {
         this.movieModels = movies.map {
-            MainViewModel(
+            Movie(
                 title = it.title,
                 releaseDate = it.releaseDate,
                 posterPath = it.posterPath,
                 checked = false
             )
         }
-        this.movies = movies
         notifyDataSetChanged()
     }
 
@@ -52,7 +50,7 @@ class MainAdapter(private var movieModels: List<MainViewModel>) :
 
     inner class MoviesHolder(private val binding: ItemMovieMainBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(movieModel: MainViewModel) {
+        fun bind(movieModel: Movie) {
             binding.movie = movieModel
             binding.root.checkbox.setOnClickListener { selectMovie(adapterPosition) }
         }

@@ -1,7 +1,7 @@
 package com.oleg.androidmvvm.main
 
 import com.oleg.androidmvvm.LocalDatabase
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

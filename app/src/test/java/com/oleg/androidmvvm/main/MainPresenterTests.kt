@@ -5,7 +5,7 @@ import com.nhaarman.mockito_kotlin.times
 import com.oleg.androidmvvm.BaseTest
 import com.oleg.androidmvvm.LocalDatabase
 import com.oleg.androidmvvm.RxImmediateSchedulerRule
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
@@ -34,10 +34,10 @@ class MainPresenterTests : BaseTest() {
     private val dummyMovies: List<Movie>
         get() {
             val dummyMovieList = ArrayList<Movie>()
-            dummyMovieList.add(Movie("Title1", "ReleaseDate1", "PosterPath1"))
-            dummyMovieList.add(Movie("Title2", "ReleaseDate2", "PosterPath2"))
-            dummyMovieList.add(Movie("Title3", "ReleaseDate3", "PosterPath3"))
-            dummyMovieList.add(Movie("Title4", "ReleaseDate4", "PosterPath4"))
+            //dummyMovieList.add(Movie("Title1", "ReleaseDate1", "PosterPath1"))
+            //dummyMovieList.add(Movie("Title2", "ReleaseDate2", "PosterPath2"))
+            //dummyMovieList.add(Movie("Title3", "ReleaseDate3", "PosterPath3"))
+            //dummyMovieList.add(Movie("Title4", "ReleaseDate4", "PosterPath4"))
             return dummyMovieList
         }
     private val deletedHashSetSingle: HashSet<Movie>

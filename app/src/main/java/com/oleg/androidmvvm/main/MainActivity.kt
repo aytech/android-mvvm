@@ -11,7 +11,7 @@ import com.oleg.androidmvvm.BaseActivity
 import com.oleg.androidmvvm.Configuration.Companion.ADD_MOVIE_ACTIVITY_REQUEST_CODE
 import com.oleg.androidmvvm.R
 import com.oleg.androidmvvm.add.AddMovieActivity
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 

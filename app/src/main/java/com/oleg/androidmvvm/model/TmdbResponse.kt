@@ -2,6 +2,7 @@ package com.oleg.androidmvvm.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.oleg.androidmvvm.data.model.Movie
 
 class TmdbResponse
 /**

@@ -1,6 +1,6 @@
 package com.oleg.androidmvvm.main
 
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 
 class MainContract {
     interface PresenterInterface {

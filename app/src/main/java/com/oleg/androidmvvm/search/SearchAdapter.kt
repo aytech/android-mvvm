@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oleg.androidmvvm.databinding.ItemMovieDetailsBinding
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 
 class SearchAdapter(
     private var movies: List<SearchViewModel>,

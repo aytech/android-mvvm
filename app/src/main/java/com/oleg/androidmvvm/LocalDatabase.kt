@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import com.oleg.androidmvvm.model.MovieDao
 
 @Database(entities = [Movie::class], version = 1, exportSchema = false)

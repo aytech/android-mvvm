@@ -2,7 +2,7 @@ package com.oleg.androidmvvm.search
 
 import com.oleg.androidmvvm.BaseTest
 import com.oleg.androidmvvm.RxImmediateSchedulerRule
-import com.oleg.androidmvvm.model.Movie
+import com.oleg.androidmvvm.data.model.Movie
 import com.oleg.androidmvvm.model.RemoteDataSource
 import com.oleg.androidmvvm.model.TmdbResponse
 import io.reactivex.Observable
@@ -34,10 +34,10 @@ class SearchPresenterTests : BaseTest() {
     private val dummyResponse: TmdbResponse
         get() {
             val dummyMovieList = ArrayList<Movie>()
-            dummyMovieList.add(Movie("Title1", "ReleaseDate1", "PosterPath1"))
-            dummyMovieList.add(Movie("Title2", "ReleaseDate2", "PosterPath2"))
-            dummyMovieList.add(Movie("Title3", "ReleaseDate3", "PosterPath3"))
-            dummyMovieList.add(Movie("Title4", "ReleaseDate4", "PosterPath4"))
+//            dummyMovieList.add(Movie("Title1", "ReleaseDate1", "PosterPath1"))
+//            dummyMovieList.add(Movie("Title2", "ReleaseDate2", "PosterPath2"))
+//            dummyMovieList.add(Movie("Title3", "ReleaseDate3", "PosterPath3"))
+//            dummyMovieList.add(Movie("Title4", "ReleaseDate4", "PosterPath4"))
             return TmdbResponse(page = 1, totalResults = 4, totalPages = 5, dummyMovieList)
         }
 
