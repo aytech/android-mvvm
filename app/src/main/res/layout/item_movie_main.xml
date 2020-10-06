@@ -6,7 +6,7 @@
 
         <variable
             name="movie"
-            type="com.oleg.androidmvp.main.MainViewModel" />
+            type="com.oleg.androidmvvm.main.MainViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

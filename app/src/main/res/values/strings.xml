@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android MVP</string>
+    <string name="app_name">Android MVVM</string>
     <string name="movies_empty">There are currently no movies in your watch list. Tap the button below to get started!</string>
     <string name="movie_default_image">Movie default image</string>
     <string name="movie_image">Movie image</string>
