@@ -1,6 +1,6 @@
 package com.oleg.androidmvvm.search
 
-import com.oleg.androidmvvm.model.TmdbResponse
+import com.oleg.androidmvvm.data.model.TmdbResponse
 
 class SearchContract {
     interface PresenterInterface {

@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.oleg.androidmvvm.model.IntegerListTypeConverter
 
-@Entity(tableName = "movie_table")
+@Entity(tableName = "movie")
 @TypeConverters(IntegerListTypeConverter::class)
 data class Movie(
 

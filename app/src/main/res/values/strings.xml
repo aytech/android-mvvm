@@ -9,4 +9,7 @@
     <string name="add_movie">Add Movie</string>
     <string name="search_for_a_movie">Search for a movie</string>
     <string name="no_movies_found">No movies found</string>
+    <string name="title">Title</string>
+    <string name="_1995">1995</string>
+    <string name="enter_title">Enter title</string>
 </resources>

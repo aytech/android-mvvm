@@ -1,4 +1,4 @@
-package com.oleg.androidmvvm.add
+package com.oleg.androidmvvm.view.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,11 @@ import com.oleg.androidmvvm.Configuration.Companion.SEARCH_MOVIE_ACTIVITY_REQUES
 import com.oleg.androidmvvm.Configuration.Companion.SEARCH_QUERY
 import com.oleg.androidmvvm.Configuration.Companion.TMDB_IMAGE_URL
 import com.oleg.androidmvvm.R
+import com.oleg.androidmvvm.add.AddMovieContract
+import com.oleg.androidmvvm.add.AddMoviePresenter
 import com.oleg.androidmvvm.search.SearchActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_add_movie.*
+import kotlinx.android.synthetic.main.activity_add.*
 
 class AddMovieActivity : BaseActivity(), AddMovieContract.ViewInterface {
 
@@ -38,9 +40,9 @@ class AddMovieActivity : BaseActivity(), AddMovieContract.ViewInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_movie)
+        setContentView(R.layout.activity_add)
 
-        addMoviePresenter = AddMoviePresenter(this, localDataSource)
+        addMoviePresenter = AddMoviePresenter(this, movieDataSource)
         search_button.setOnClickListener { goToSearchMovieActivity() }
         add_movie.setOnClickListener { onClickAddMovie() }
     }

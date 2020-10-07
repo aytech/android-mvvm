@@ -4,7 +4,7 @@ import com.oleg.androidmvvm.BaseTest
 import com.oleg.androidmvvm.RxImmediateSchedulerRule
 import com.oleg.androidmvvm.data.model.Movie
 import com.oleg.androidmvvm.model.RemoteDataSource
-import com.oleg.androidmvvm.model.TmdbResponse
+import com.oleg.androidmvvm.data.model.TmdbResponse
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule

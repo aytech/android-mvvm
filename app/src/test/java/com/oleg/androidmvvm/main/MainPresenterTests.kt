@@ -3,7 +3,7 @@ package com.oleg.androidmvvm.main
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.times
 import com.oleg.androidmvvm.BaseTest
-import com.oleg.androidmvvm.LocalDatabase
+import com.oleg.androidmvvm.data.db.MovieDatabase
 import com.oleg.androidmvvm.RxImmediateSchedulerRule
 import com.oleg.androidmvvm.data.model.Movie
 import io.reactivex.Observable
@@ -27,7 +27,7 @@ class MainPresenterTests : BaseTest() {
     private lateinit var mockActivity: MainContract.ViewInterface
 
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
-    private lateinit var mockDataSource: LocalDatabase
+    private lateinit var mockDataSource: MovieDatabase
 
     private lateinit var mainPresenter: MainPresenter
 

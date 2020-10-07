@@ -1,7 +1,7 @@
 package com.oleg.androidmvvm.add
 
 import com.oleg.androidmvvm.BaseTest
-import com.oleg.androidmvvm.LocalDatabase
+import com.oleg.androidmvvm.data.db.MovieDatabase
 import com.oleg.androidmvvm.data.model.Movie
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -19,7 +19,7 @@ class AddMoviePresenterTests : BaseTest() {
     private lateinit var mockActivity: AddMovieContract.ViewInterface
 
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
-    private lateinit var mockDataSource: LocalDatabase
+    private lateinit var mockDataSource: MovieDatabase
 
     @Captor
     private lateinit var movieArgumentCaptor: ArgumentCaptor<Movie>

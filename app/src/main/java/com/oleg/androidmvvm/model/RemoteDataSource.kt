@@ -1,7 +1,8 @@
 package com.oleg.androidmvvm.model
 
 import com.oleg.androidmvvm.Configuration.Companion.TMDB_API_KEY
-import com.oleg.androidmvvm.network.RetrofitClient
+import com.oleg.androidmvvm.data.model.TmdbResponse
+import com.oleg.androidmvvm.data.net.RetrofitClient
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

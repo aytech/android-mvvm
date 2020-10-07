@@ -10,7 +10,7 @@ import android.widget.Toast
 import com.oleg.androidmvvm.BaseActivity
 import com.oleg.androidmvvm.Configuration.Companion.ADD_MOVIE_ACTIVITY_REQUEST_CODE
 import com.oleg.androidmvvm.R
-import com.oleg.androidmvvm.add.AddMovieActivity
+import com.oleg.androidmvvm.view.activities.AddMovieActivity
 import com.oleg.androidmvvm.data.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
@@ -31,7 +31,7 @@ class MainActivity : BaseActivity(), MainContract.ViewInterface {
         setContentView(R.layout.activity_main)
 
         viewAdapter = MainAdapter(listOf())
-        mainPresenter = MainPresenter(this, localDataSource)
+        mainPresenter = MainPresenter(this, movieDataSource)
         supportActionBar?.title = "Movies to watch"
         movies_recyclerview.apply { adapter = viewAdapter }
         fab_add.setOnClickListener { goToAddMovieActivity() }

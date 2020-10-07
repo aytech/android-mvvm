@@ -13,7 +13,7 @@ import com.oleg.androidmvvm.Configuration.Companion.SEARCH_QUERY
 import com.oleg.androidmvvm.R
 import com.oleg.androidmvvm.data.model.Movie
 import com.oleg.androidmvvm.model.RemoteDataSource
-import com.oleg.androidmvvm.model.TmdbResponse
+import com.oleg.androidmvvm.data.model.TmdbResponse
 import kotlinx.android.synthetic.main.activity_search_movie.*
 
 class SearchActivity : AppCompatActivity(), SearchContract.ViewInterface {

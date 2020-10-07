@@ -1,7 +1,7 @@
 package com.oleg.androidmvvm.search
 
 import com.oleg.androidmvvm.model.RemoteDataSource
-import com.oleg.androidmvvm.model.TmdbResponse
+import com.oleg.androidmvvm.data.model.TmdbResponse
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull

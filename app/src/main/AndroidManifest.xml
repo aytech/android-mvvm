@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.oleg.androidmvvm.add.AddMovieActivity" />
+        <activity android:name="com.oleg.androidmvvm.view.activities.AddMovieActivity" />
         <activity android:name="com.oleg.androidmvvm.search.SearchActivity" />
     </application>
 

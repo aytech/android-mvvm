@@ -2,13 +2,14 @@ package com.oleg.androidmvvm
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.oleg.androidmvvm.data.db.MovieDatabase
 
 open class BaseActivity : AppCompatActivity() {
 
-    protected lateinit var localDataSource: LocalDatabase
+    protected lateinit var movieDataSource: MovieDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        localDataSource = LocalDatabase.getInstance(this)
+        movieDataSource = MovieDatabase.getInstance(this)
     }
 }
