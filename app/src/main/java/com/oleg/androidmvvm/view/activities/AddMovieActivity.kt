@@ -2,10 +2,9 @@ package com.oleg.androidmvvm.view.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.oleg.androidmvvm.Configuration.Companion.SEARCH_MOVIE_ACTIVITY_REQUEST_CODE
 import com.oleg.androidmvvm.Configuration.Companion.SEARCH_QUERY
 import com.oleg.androidmvvm.R
@@ -21,7 +20,7 @@ class AddMovieActivity : BaseActivity() {
     private val toolbar: Toolbar by lazy { toolbar_toolbar_view as Toolbar }
     private lateinit var viewModel: AddViewModel
 
-    fun goToSearchMovieActivity(view: View) {
+    private fun onSearchMovieClicked() {
         if (movie_title.text.toString().isNotBlank()) {
             val intent = Intent(this@AddMovieActivity, SearchActivity::class.java)
             intent.putExtra(SEARCH_QUERY, movie_title.text.toString())
@@ -37,8 +36,9 @@ class AddMovieActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<ActivityAddBinding>(this, R.layout.activity_add)
-        viewModel = ViewModelProviders.of(this).get(AddViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AddViewModel::class.java)
         binding.model = viewModel
+        binding.searchButton.setOnClickListener { onSearchMovieClicked() }
         configureLiveDataObservers()
     }
 

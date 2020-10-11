@@ -85,7 +85,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/search_for_a_movie"
-            android:onClick="goToSearchMovieActivity"
             android:src="@drawable/ic_search_black_24dp"
             app:layout_constraintBottom_toBottomOf="@+id/movie_title"
             app:layout_constraintStart_toEndOf="@+id/movie_title"

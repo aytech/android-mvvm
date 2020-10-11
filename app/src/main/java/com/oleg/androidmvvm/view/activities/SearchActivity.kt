@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View.*
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.oleg.androidmvvm.Configuration.Companion.SEARCH_QUERY
 import com.oleg.androidmvvm.R
@@ -71,7 +71,7 @@ class SearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_movie)
         intent?.extras?.getString(SEARCH_QUERY)?.let { query = it }
-        viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         search_results_recyclerview.apply { adapter = viewAdapter }
         searchMovie()
     }

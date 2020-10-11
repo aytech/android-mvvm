@@ -8,7 +8,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.oleg.androidmvvm.Configuration.Companion.ADD_MOVIE_ACTIVITY_REQUEST_CODE
 import com.oleg.androidmvvm.R
 import com.oleg.androidmvvm.view.adapters.MovieListAdapter
@@ -49,7 +49,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         movies_recyclerview.apply { adapter = viewAdapter }
         showLoading()
         viewModel.getSavedMovies().observe(this, { movies ->
