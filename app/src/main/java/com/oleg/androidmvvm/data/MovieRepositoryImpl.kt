@@ -1,6 +1,5 @@
 package com.oleg.androidmvvm.data
 
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.oleg.androidmvvm.data.model.Movie
@@ -27,12 +26,14 @@ class MovieRepositoryImpl : MovieRepository {
     override fun getSavedMovies(): LiveData<List<Movie>> = allMovies
 
     override fun saveMovie(movie: Movie) {
-        TODO("Not yet implemented")
+        thread {
+            movieDao.insert(movie)
+        }
     }
 
     override fun deleteMovie(movie: Movie) {
         thread {
-            db.movieDao().delete(movie.id)
+            movieDao.delete(movie.id)
         }
     }
 
@@ -52,29 +53,5 @@ class MovieRepositoryImpl : MovieRepository {
         })
 
         return data
-    }
-
-    private class InsertAsyncTask internal constructor(private val dao: MovieDao) :
-        AsyncTask<Movie, Void, Void>() {
-        override fun doInBackground(vararg params: Movie): Void? {
-            dao.insert(params[0])
-            return null
-        }
-    }
-
-    private class DeleteAsyncTask internal constructor(private val dao: MovieDao) :
-        AsyncTask<Boolean, Void, Void>() {
-        override fun doInBackground(vararg p0: Boolean?): Void? {
-            dao.deleteMovies(p0[0]!!)
-            return null
-        }
-    }
-
-    private class UpdateAsyncTask internal constructor(private val dao: MovieDao) :
-        AsyncTask<Movie, Void, Void>() {
-        override fun doInBackground(vararg params: Movie): Void? {
-            dao.updateMovie(params[0])
-            return null
-        }
     }
 }

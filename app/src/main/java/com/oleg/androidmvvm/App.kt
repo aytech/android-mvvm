@@ -6,6 +6,7 @@ import timber.log.Timber
 
 lateinit var db: MovieDatabase
 
+@Suppress("unused")
 class App : Application() {
     override fun onCreate() {
         super.onCreate()

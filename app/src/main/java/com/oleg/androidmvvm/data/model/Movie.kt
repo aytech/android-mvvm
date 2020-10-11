@@ -3,10 +3,10 @@ package com.oleg.androidmvvm.data.model
 import androidx.room.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.oleg.androidmvvm.model.IntegerListTypeConverter
+import com.oleg.androidmvvm.data.db.GenreIdConverter
 
 @Entity(tableName = "movie")
-@TypeConverters(IntegerListTypeConverter::class)
+@TypeConverters(GenreIdConverter::class)
 data class Movie(
 
     @PrimaryKey(autoGenerate = true)

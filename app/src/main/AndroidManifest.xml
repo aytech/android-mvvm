@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="false">
         <activity
-            android:name="com.oleg.androidmvvm.main.MainActivity"
+            android:name="com.oleg.androidmvvm.view.activities.MainActivity"
             android:label="Main"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.oleg.androidmvvm.view.activities.AddMovieActivity" />
-        <activity android:name="com.oleg.androidmvvm.search.SearchActivity" />
+        <activity android:name="com.oleg.androidmvvm.view.activities.SearchActivity" />
     </application>
 
 </manifest>

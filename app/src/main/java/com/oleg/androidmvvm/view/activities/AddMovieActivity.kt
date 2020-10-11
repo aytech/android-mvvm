@@ -2,73 +2,61 @@ package com.oleg.androidmvvm.view.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import com.oleg.androidmvvm.BaseActivity
-import com.oleg.androidmvvm.Configuration.Companion.EXTRA_POSTER_PATH
-import com.oleg.androidmvvm.Configuration.Companion.EXTRA_RELEASE_DATE
-import com.oleg.androidmvvm.Configuration.Companion.EXTRA_TITLE
+import android.view.View
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import com.oleg.androidmvvm.Configuration.Companion.SEARCH_MOVIE_ACTIVITY_REQUEST_CODE
 import com.oleg.androidmvvm.Configuration.Companion.SEARCH_QUERY
-import com.oleg.androidmvvm.Configuration.Companion.TMDB_IMAGE_URL
 import com.oleg.androidmvvm.R
-import com.oleg.androidmvvm.add.AddMovieContract
-import com.oleg.androidmvvm.add.AddMoviePresenter
-import com.oleg.androidmvvm.search.SearchActivity
-import com.squareup.picasso.Picasso
+import com.oleg.androidmvvm.action
+import com.oleg.androidmvvm.databinding.ActivityAddBinding
+import com.oleg.androidmvvm.snack
+import com.oleg.androidmvvm.viewmodel.AddViewModel
 import kotlinx.android.synthetic.main.activity_add.*
+import kotlinx.android.synthetic.main.toolbar_view_custom_layout.*
 
-class AddMovieActivity : BaseActivity(), AddMovieContract.ViewInterface {
+class AddMovieActivity : BaseActivity() {
 
-    private lateinit var addMoviePresenter: AddMovieContract.PresenterInterface
+    private val toolbar: Toolbar by lazy { toolbar_toolbar_view as Toolbar }
+    private lateinit var viewModel: AddViewModel
 
-    private fun goToSearchMovieActivity() {
-        if (movie_title.text.isNullOrEmpty()) {
-            showToast("Enter query")
-        } else {
+    fun goToSearchMovieActivity(view: View) {
+        if (movie_title.text.toString().isNotBlank()) {
             val intent = Intent(this@AddMovieActivity, SearchActivity::class.java)
             intent.putExtra(SEARCH_QUERY, movie_title.text.toString())
             startActivityForResult(intent, SEARCH_MOVIE_ACTIVITY_REQUEST_CODE)
+        } else {
+            showMessage(getString(R.string.enter_title))
         }
     }
 
-    private fun onClickAddMovie() {
-        val title: String = movie_title.text.toString()
-        val releaseDate: String = movie_release_date.text.toString()
-        val posterPath: String = if (movie_image.tag == null) "" else movie_image.tag.toString()
-        addMoviePresenter.addMovie(title, releaseDate, posterPath)
-    }
+    override fun getToolbarInstance(): Toolbar? = toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add)
-
-        addMoviePresenter = AddMoviePresenter(this, movieDataSource)
-        search_button.setOnClickListener { goToSearchMovieActivity() }
-        add_movie.setOnClickListener { onClickAddMovie() }
+        val binding =
+            DataBindingUtil.setContentView<ActivityAddBinding>(this, R.layout.activity_add)
+        viewModel = ViewModelProviders.of(this).get(AddViewModel::class.java)
+        binding.model = viewModel
+        configureLiveDataObservers()
     }
 
-    override fun returnToMain() {
-        setResult(RESULT_OK)
-        finish()
-    }
-
-    override fun showToast(string: String) {
-        Toast.makeText(this@AddMovieActivity, string, Toast.LENGTH_LONG).show()
-    }
-
-    override fun displayError(string: String) {
-        showToast(string)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        this@AddMovieActivity.runOnUiThread {
-            movie_title.setText(data?.getStringExtra(EXTRA_TITLE))
-            movie_release_date.setText(data?.getStringExtra(EXTRA_RELEASE_DATE))
-            movie_image.tag = data?.getStringExtra(EXTRA_POSTER_PATH)
-            Picasso.get().load(TMDB_IMAGE_URL + data?.getStringExtra(EXTRA_POSTER_PATH))
-                .into(movie_image)
+    private fun showMessage(message: String) {
+        addLayout.snack(message) {
+            action(getString(R.string.ok)) {}
         }
+    }
+
+    private fun configureLiveDataObservers() {
+        viewModel.getSaveLiveData().observe(this, { saved ->
+            saved?.let {
+                if (saved) {
+                    finish()
+                } else {
+                    showMessage(getString(R.string.title_date_message))
+                }
+            }
+        })
     }
 }
