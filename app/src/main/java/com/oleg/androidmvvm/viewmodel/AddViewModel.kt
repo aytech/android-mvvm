@@ -14,14 +14,6 @@ class AddViewModel(private val repository: MovieRepository = MovieRepositoryImpl
 
     private val saveLiveData = MutableLiveData<Boolean>()
 
-    private fun canSaveMovie(): Boolean {
-        val title = this.title.get()
-        title?.let {
-            return title.isNotEmpty()
-        }
-        return false
-    }
-
     fun getSaveLiveData(): LiveData<Boolean> = saveLiveData
 
     fun saveMovie() {
@@ -31,5 +23,12 @@ class AddViewModel(private val repository: MovieRepository = MovieRepositoryImpl
         } else {
             saveLiveData.postValue(false)
         }
+    }
+
+    fun canSaveMovie(): Boolean {
+        val title = this.title.get()
+        val releaseDate = this.releaseDate.get()
+
+        return !title.isNullOrEmpty() && !releaseDate.isNullOrEmpty()
     }
 }
